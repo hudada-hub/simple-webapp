@@ -1,21 +1,64 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Jenkins Demo App</title>
+    <title>Jenkins Freestyle Demo</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 40px; }
-        .success { color: green; }
-        .timestamp { color: blue; }
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+        .success { color: #4CAF50; font-weight: bold; }
+        .info { color: #2196F3; }
+        .build-info { 
+            background: rgba(0,0,0,0.3); 
+            padding: 15px; 
+            border-radius: 5px;
+            margin: 20px 0;
+        }
     </style>
 </head>
 <body>
-    <h1>🚀 Jenkins Demo Application</h1>
-    <p class="success">✅ 应用部署成功！</p>
-    <p>版本: <span id="version">1.0.0</span></p>
-    <p>构建时间: <span id="timestamp">Loading...</span></p>
-    
+    <div class="container">
+        <h1>🚀 Jenkins 自由风格任务 Demo</h1>
+        <p class="success">✅ 应用部署成功！</p>
+        
+        <div class="build-info">
+            <h3>构建信息</h3>
+            <p>构建编号: <span id="buildNumber">Loading...</span></p>
+            <p>构建时间: <span id="buildTime">Loading...</span></p>
+            <p>部署状态: <span class="success">运行中</span></p>
+        </div>
+
+        <h2>学习要点</h2>
+        <ul>
+            <li>自由风格任务配置</li>
+            <li>Git 集成</li>
+            <li>Shell 脚本执行</li>
+            <li>文件操作</li>
+            <li>构建后操作</li>
+        </ul>
+    </div>
+
     <script>
-        document.getElementById('timestamp').textContent = new Date().toLocaleString();
+        // 动态显示构建信息
+        document.getElementById('buildNumber').textContent = new Date().getTime();
+        document.getElementById('buildTime').textContent = new Date().toLocaleString();
+        
+        // 添加一些动态效果
+        setInterval(() => {
+            const status = document.querySelector('.success');
+            status.style.opacity = status.style.opacity === '0.5' ? '1' : '0.5';
+        }, 1000);
     </script>
 </body>
 </html>
